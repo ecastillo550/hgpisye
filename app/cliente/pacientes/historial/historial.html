@@ -1,0 +1,23 @@
+<!-- Esta mierda esta hardcodeada -->
+<!-- Pliz no lo hagan en casa -->
+<div ng-controller="HistorialCtlr">
+	<!-- Me odio -->
+	<timeline>
+	  <timeline-event ng-repeat="event in getNumber(5) track by $index">
+	    <timeline-badge class="{{event.badgeClass}}">
+				<md-icon md-font-set="material-icons">{{event.badgeIcon}}</md-icon>
+	    </timeline-badge>
+	    <timeline-panel ng-click="muestraEvento($ev)" class="{{event.badgeClass}}" style="cursor: pointer">
+	      <timeline-heading>
+	        <h3>{{event.title}}</h3>
+	        <p ng-if="event.when">
+            <small class="text-muted">
+            	<md-icon md-font-set="material-icons">query_builder</md-icon> {{event.when}}
+            </small>
+          </p>
+	      </timeline-heading>
+	      <p>{{event.content}}</p>
+	    </timeline-panel>
+	  </timeline-event>
+	</timeline>
+</div>

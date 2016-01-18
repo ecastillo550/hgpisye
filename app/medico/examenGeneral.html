@@ -1,0 +1,550 @@
+<form novalidate>
+	<md-autocomplete
+		ng-disabled="ctrl.isDisabled"
+		md-no-cache="ctrl.noCache"
+		md-selected-item="ctrl.selectedItem"
+		md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+		md-search-text="ctrl.searchText"
+		md-selected-item-change="ctrl.selectedItemChange(item)"
+		md-items="item in ctrl.querySearch(ctrl.searchText)"
+		md-item-text="item.display"
+		md-min-length="0"
+		placeholder="Nombre del paciente">
+		<md-item-template>
+			<span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+		</md-item-template>
+		<md-not-found>
+			No se encontraron coincidencias.
+		</md-not-found>
+	</md-autocomplete>
+
+	<md-tabs md-dynamic-height md-swipe-content>
+		<md-tab label="Etapa 1">
+			<md-content>
+				<h3> Antecedentes</h3>
+			  <md-input-container>
+			    <label>&iquest;A qu&eacute; edad empez&oacute; a trabajar?</label>
+			  	<input ng-model="formData.edadTrabajar" ng-model="formData.edadComienzoTrabajo"  maxlength="100" type="text" required="required" class="form-control" />
+			  </md-input-container>
+			  <md-input-container>
+			      <label>&iquest;Qu&eacute; trabajos ha desempe&ntilde;ado?</label>
+			    	<textarea ng-model="formData.trabajosDesempenados" class="form-control" rows="5"></textarea>
+			  </md-input-container>
+
+				<h3>Empleos Anteriores</h3>
+			  <md-input-container>
+			      <label>Empresa</label>
+			    	<input ng-model="formData.empresaPasado" maxlength="100" type="text" required="required" class="form-control" />
+			  </md-input-container>
+			  <md-input-container>
+						<label>Puesto</label>
+			    	<input ng-model="formData.puestoPasado" maxlength="100" type="text" required="required" class="form-control" />
+			  </md-input-container>
+			  <md-input-container>
+			      <label>Departamento</label>
+			    	<input ng-model="formData.departamentoPasado" maxlength="100" type="text" required="required" class="form-control" />
+			  </md-input-container>
+			  <md-input-container>
+			      <label>Tiempo (en meses)</label>
+			      <input ng-model="formData.tiempoPasado" maxlength="100" type="text" required="required" class="form-control" />
+			  </md-input-container>
+			  <md-input-container>
+			      <label>&iquest;Qu&eacute; produc&iacute;a?</label>
+			      <input ng-model="formData.produccion" ng-model="formData.detalleProduccionPasada" maxlength="100" type="text" required="required" class="form-control" />
+			  </md-input-container>
+
+		  	<h3>Factores Ambientales Nocivos</h3>
+				<div layout="row" layout-sm="column">
+		      <md-checkbox flex ng-model="formData.faRuido">
+	        	<md-icon md-svg-src="exposicion:ruido"></md-icon>
+						Ruido
+		    	</md-checkbox>
+		      <md-checkbox flex ng-model="formData.faHumo">
+		      	<md-icon md-svg-src="exposicion:humo"></md-icon>
+						Humo
+		    	</md-checkbox>
+	        <md-checkbox flex ng-model="formData.faVapor">
+	        	<md-icon md-svg-src="exposicion:vapor"></md-icon>
+						Vapor
+	    		</md-checkbox>
+	        <md-checkbox flex ng-model="formData.faHumedad">
+	        	<md-icon md-svg-src="exposicion:humedad"></md-icon>
+						Humedad
+	    		</md-checkbox>
+				</div>
+				<div layout="row" layout-sm="column">
+	        <md-checkbox flex ng-model="formData.faVibracion">
+	        	<md-icon md-svg-src="exposicion:vibracion"></md-icon>
+						Vibraciones
+	    		</md-checkbox>
+	        <md-checkbox flex ng-model="formData.faGas">
+	        	<md-icon md-svg-src="exposicion:gas"></md-icon>
+						Gases
+	    		</md-checkbox>
+	        <md-checkbox flex ng-model="formData.faQuimico">
+	        	<md-icon md-svg-src="exposicion:quimico"></md-icon>
+						Qu&iacute;micos
+	    		</md-checkbox>
+	        <md-checkbox flex ng-model="formData.faRadiacion">
+	        	<md-icon md-svg-src="exposicion:radiacion"></md-icon>
+						Radiaciones
+	    		</md-checkbox>
+				</div>
+				<div layout="row" layout-sm="column">
+	        <md-checkbox flex ng-model="formData.faCalor">
+	        	<md-icon md-svg-src="exposicion:calor"></md-icon>
+						Calor
+	    		</md-checkbox>
+	        <md-checkbox flex ng-model="formData.faSolvente">
+	        	<md-icon md-svg-src="exposicion:solvente"></md-icon>
+						Solventes
+	    		</md-checkbox>
+	        <md-checkbox flex ng-model="formData.faBiologico">
+	        	<md-icon md-svg-src="exposicion:biologico"></md-icon>
+						Biol&oacute;gicos
+	    		</md-checkbox>
+	        <md-checkbox flex ng-model="formData.faPolvo">
+	        	<md-icon md-svg-src="exposicion:polvo"></md-icon>
+						Polvos
+	    		</md-checkbox>
+				</div>
+				<div layout="row" layout-sm="column">
+	        <md-checkbox flex ng-model="formData.faFrio">
+	        	<md-icon md-svg-src="exposicion:frio"></md-icon>
+						Fr&iacute;o
+	    		</md-checkbox>
+	        <md-checkbox flex ng-model="formData.faPintura">
+	        	<md-icon md-svg-src="exposicion:pintura"></md-icon>
+						Pintura
+	    		</md-checkbox>
+	      	<md-checkbox flex ng-model="formData.faErgonomico">
+	      		<md-icon md-svg-src="exposicion:ergonomico"></md-icon>
+						Ergon&oacute;micos
+	  			</md-checkbox>
+					<div flex="25"></div>
+				</div>
+				<md-button>Siguiente Paso</md-button>
+			</md-content>
+		</md-tab>
+
+		<md-tab label="Etapa 2">
+      <h3> Antecedentes heredo- familiares</h3>
+			<md-input-container>
+        <label>Cardiovasculares</label>
+				<md-select ng-model="formData.AntHeredoFamCa" multiple>
+	        <md-option value="caPadres">Padres</md-option>
+	        <md-option value="caHermanos">Hermanos</md-option>
+	        <md-option value="caOtros">Otros</md-option>
+				</dm-select>
+      </md-input-container>
+			<md-input-container>
+        <label>Oncol&oacute;gicos</label>
+				<md-select ng-model="formData.AntHeredoFamOn" multiple>
+	        <md-option value="onPadres">Padres</md-option>
+	        <md-option value="onHermanos">Hermanos</md-option>
+	        <md-option value="onOtros">Otros</md-option>
+				</dm-select>
+      </md-input-container>
+			<md-input-container>
+        <label>Tuberculosis</label>
+				<md-select ng-model="formData.AntHeredoFamTu" multiple>
+	        <md-option value="tuPadres">Padres</md-option>
+	        <md-option value="tuHermanos">Hermanos</md-option>
+	        <md-option value="tuOtros">Otros</md-option>
+				</dm-select>
+      </md-input-container>
+			<md-input-container>
+        <label>Diabetes</label>
+				<md-select ng-model="formData.AntHeredoFamDi" multiple>
+	        <md-option value="diPadres">Padres</md-option>
+	        <md-option value="diHermanos">Hermanos</md-option>
+	        <md-option value="diOtros">Otros</md-option>
+				</dm-select>
+      </md-input-container>
+			<md-input-container>
+        <label>Renales</label>
+				<md-select ng-model="formData.AntHeredoFamRe" multiple>
+	        <md-option value="rePadres">Padres</md-option>
+	        <md-option value="reHermanos">Hermanos</md-option>
+	        <md-option value="reOtros">Otros</md-option>
+				</dm-select>
+      </md-input-container>
+			<md-input-container>
+        <label>Congenitos</label>
+				<md-select ng-model="formData.AntHeredoFamCg" multiple>
+	        <md-option value="cgPadres">Padres</md-option>
+	        <md-option value="cgHermanos">Hermanos</md-option>
+	        <md-option value="cgOtros">Otros</md-option>
+				</dm-select>
+      </md-input-container>
+			<md-input-container>
+        <label>Convulsivos</label>
+				<md-select ng-model="formData.AntHeredoFamCn" multiple>
+	        <md-option value="cnPadres">Padres</md-option>
+	        <md-option value="cnHermanos">Hermanos</md-option>
+	        <md-option value="cnOtros">Otros</md-option>
+				</dm-select>
+      </md-input-container>
+			<md-input-container>
+        <label>Psiquiatricis</label>
+				<md-select ng-model="formData.AntHeredoFamPs" multiple>
+	        <md-option value="psPadres">Padres</md-option>
+	        <md-option value="psHermanos">Hermanos</md-option>
+	        <md-option value="psOtros">Otros</md-option>
+				</dm-select>
+      </md-input-container>
+			<md-input-container>
+        <label>Otros</label>
+				<md-select ng-model="formData.AntHeredoFamOt" multiple>
+	        <md-option value="otPadres">Padres</md-option>
+	        <md-option value="otHermanos">Hermanos</md-option>
+	        <md-option value="otOtros">Otros</md-option>
+				</dm-select>
+      </md-input-container>
+      <md-input-container>
+          <label>Observaciones</label>
+          <input ng-model="formData.observaciones" maxlength="100" type="text" required/>
+      </md-input-container>
+      <md-switch ng-model="dispAltaShow">Presenta disposicion alta a enfermedades:</md-switch>
+      <md-input-container ng-show="dispAltaShow">
+        <label>Cuales:</label>
+        <input ng-model="formData.cuales" maxlength="100" type="text" required="required" class="form-control" />
+      </md-input-container>
+			<h3> Antecedentes personales no patológicos</h3>
+      <mg-switch>Inmunizaciones:</mg-switch>
+			<div ng-show="imunizacionesShow">
+				<md-checkbox ng-model="formData.ttetanico">T. Tetanico</md-checkbox>
+	      <md-checkbox ng-model="formData.influenza">Influenza</md-checkbox>
+	      <md-checkbox ng-model="formData.bcg">B.C.G.</md-checkbox>
+	      <md-checkbox ng-model="formData.vshepatitis">VS Hepatitis B</md-checkbox>
+	      <md-checkbox ng-model="formData.tantifoidea">T. Antitifoidea</md-checkbox>
+	      <md-checkbox ng-model="formData.neumococo">Neumococo</md-checkbox>
+			</div>
+    	<md-input-container>
+        <label>Medicacion Actual:</label>
+        <input ng-model="formData.medicacionactual" maxlength="100" type="text" required="required"/>
+      </md-input-container>
+    	<h4>Drogadiccion:</h4>
+    <div layout-sm="column" layout="row">
+      <md-checkbox flex ng-model="marihuana">Marihuana</md-checkbox>
+      <md-checkbox flex ng-model="cocaina">Cocaina</md-checkbox>
+      <md-checkbox flex ng-model="amf">AMF</md-checkbox>
+      <md-checkbox flex ng-model="susToxicasInn">Sus. Toxic unhal</md-checkbox>
+      <md-checkbox flex ng-model="metanfetaminas">Metanfetaminas</md-checkbox>
+    </div>
+
+			<h4>Higiene:</h4>
+			<div layout-sm="column" layout="row">
+				<div layout="row">
+					<md-radio-group layout-sm="column" layout="row" flex>
+						<md-radio-button flex value="bueno">Bueno</md-radio-button>
+						<md-radio-button flex value="regular">Regular</md-radio-button>
+						<md-radio-button flex value="malo">Mala</md-radio-button>
+					</md-radio-group>
+				</div>
+			</div>
+			<h4>El trabajador presenta alguna condici&oacute;n que afecte su salud:</h4>
+			<md-input-container>
+			<label>&iquest;Cu&aacute;les?</label>
+			<input ng-model="formData.cualcondicion"  maxlength="100" type="text" required="required"/>
+			</md-input-container>
+
+
+			<h3> Antecedentes personales patológicos</h3>
+			<label ng-model="formData.diabetes"> Diabetes: </label>
+			<div layout="row" layout-sm="column" layout-padding>
+			<md-input-container flex>
+				<div layout="row">
+					<md-checkbox flex ng-model="formData.diNo" ng-model="diagNo" ng-init="diagNo=true" >NO</md-checkbox>
+					<md-checkbox flex ng-model="formData.diTX" ng-model="diagTX" ng-change="diagNo=false">TX</md-checkbox>
+					<md-checkbox flex ng-model="formData.diDX" ng-model="diagDX" ng-change="diagNo=false">DX</md-checkbox>
+				</div>
+				<div layout="row">
+					<md-input-container flex layout-sm="column" ng-show="diagTX">
+							<input ng-model="formData.diaDX" required="required" placeholder="&iquest;Cu&aacute;l es el tratamiento ?"/>
+					</md-input-container>
+					<md-input-container flex layout-sm="column" ng-show="diagDX || diagTX">
+							<input ng-model="formData.diaDX" required="required" placeholder="&iquest;Cu&aacute;l es el diagn&oacute;stico ?"/>
+					</md-input-container>
+				</div>
+			</md-input-container>
+			</div>
+			<label ng-model="formData.hipertencion"> Hipertenci&oacute;n: </label>
+			<md-input-container>
+					<md-checkbox ng-model="formData.hiNo">NO</md-checkbox>
+					<md-checkbox ng-model="formData.hiTX">TX</md-checkbox>
+						<md-input-container ng-show="hiTX">
+							<input ng-model="formData.hiDX" required="required" placeholder="&iquest;Cu&aacute;l es el tratamiento ?"/>
+						</md-input-container>
+					<md-checkbox ng-model="formData.hiDX">DX</md-checkbox>
+						<md-input-container ng-show="hiDX || hipeTX">
+							<input ng-model="formData.hiDX" required="required" placeholder="&iquest;Cu&aacute;l es el diagn&oacute;stico ?"/>
+						</md-input-container>
+
+			</md-input-container>
+            <label ng-model="formData.lumalgias"> Lumalgias: </label>
+			<md-input-container>
+					<md-checkbox ng-model="formData.luNo" ng-init="lumaNo=true">NO</md-checkbox>
+					<md-checkbox ng-model="formData.luTX" ng-change="lumaNo=false">TX</md-checkbox>
+						<md-input-container ng-show="lumaTX">
+							<input ng-model="formData.lumDX" required="required" placeholder="&iquest;Cu&aacute;l es el tratamiento ?"/>
+						</md-input-container>
+					<md-checkbox ng-model="formData.luDX" ng-change="lumaNo=false">DX</md-checkbox>
+						<md-input-container ng-show="lumaDX || lumaTX">
+							<input ng-model="formData.lumDX" required="required" placeholder="&iquest;Cu&aacute;l es el diagn&oacute;stico ?"/>
+						</md-input-container>
+
+			</md-input-container>
+
+             <label ng-model="formData.obesidad"> Obesidad: </label>
+			<md-input-container>
+					<md-checkbox ng-model="formData.obNo" ng-model="obesNo" ng-init="obesNo=true">NO</md-checkbox>
+					<md-checkbox ng-model="formData.obTX" ng-model="obesTX" ng-change="obesNo=false">TX</md-checkbox>
+						<md-input-container ng-show="obesTX">
+							<input ng-model="formData.obeDX" required="required" placeholder="&iquest;Cu&aacute;l es el tratamiento ?"/>
+						</md-input-container>
+					<md-checkbox ng-model="formData.obeDX" ng-model="obesDX" ng-change="obesNo=false">DX</md-checkbox>
+						<md-input-container ng-show="obesDX || obesTX">
+							<input ng-model="formData.obeDX" required="required" placeholder="&iquest;Cu&aacute;l es el diagn&oacute;stico ?"/>
+						</md-input-container>
+
+			</md-input-container>
+
+            <label ng-model="formData.neumonias"> Neumonias: </label>
+			<md-input-container>
+					<md-checkbox ng-model="formData.neNo" ng-init="neumNo=true">NO</md-checkbox>
+					<md-checkbox ng-model="formData.neTX" ng-change="neumNo=false">TX</md-checkbox>
+						<md-input-container ng-show="neumTX">
+							<input ng-model="formData.neuDX" required="required" placeholder="&iquest;Cu&aacute;l es el tratamiento ?"/>
+						</md-input-container>
+					<md-checkbox ng-model="formData.neDX" ng-change="neumNo=false">DX</md-checkbox>
+						<md-input-container ng-show="neumDX || neumTX">
+							<input ng-model="formData.neuDX" required="required" placeholder="&iquest;Cu&aacute;l es el diagn&oacute;stico ?"/>
+						</md-input-container>
+
+			</md-input-container>
+
+             <label ng-model="formData.hipertiroidismo"> Hipertiroidismo: </label>
+			<md-input-container>
+					<md-checkbox ng-model="formData.hi2No" ng-init="hipe2No=true">NO</md-checkbox>
+					<md-checkbox ng-model="formData.hi2TX" ng-change="hipe2No=false">TX</md-checkbox>
+						<md-input-container ng-show="hipe2TX">
+							<input ng-model="formData.hip2DX" required="required" placeholder="&iquest;Cu&aacute;l es el tratamiento ?"/>
+						</md-input-container>
+					<md-checkbox ng-model="formData.hi2DX" ng-change="hipe2No=false">DX</md-checkbox>
+						<md-input-container ng-show="hipe2DX || hipe2TX">
+							<input ng-model="formData.hip2DX" required="required" placeholder="&iquest;Cu&aacute;l es el diagn&oacute;stico ?"/>
+						</md-input-container>
+
+			</md-input-container>
+			<label ng-model="formData.hipotirodismo"> Hipotirodismo: </label>
+			<md-input-container>
+					<md-checkbox ng-model="formData.hi3No" ng-init="hipoNo=true">NO</md-checkbox>
+					<md-checkbox ng-model="formData.hi3TX" ng-change="hipoNo=false">TX</md-checkbox>
+						<md-input-container ng-show="hipoTX">
+							<input ng-model="formData.hip3DX" required="required" placeholder="&iquest;Cu&aacute;l es el tratamiento ?"/>
+						</md-input-container>
+					<md-checkbox ng-model="formData.hip3DX" ng-change="hipoNo=false">DX</md-checkbox>
+						<md-input-container ng-show="hipoDX || hipoTX">
+							<input ng-model="formData.hip3DX" required="required" placeholder="&iquest;Cu&aacute;l es el diagn&oacute;stico ?"/>
+						</md-input-container>
+
+			</md-input-container>
+            <label ng-model="formData.hernias"> Hernias: </label>
+			<md-input-container>
+					<md-checkbox ng-model="formData.heNo" ng-init="hernNo=true">NO</md-checkbox>
+					<md-checkbox ng-model="formData.heTX" ng-change="hernNo=false">TX</md-checkbox>
+						<md-input-container ng-show="hernTX">
+							<input ng-model="formData.herDX" required="required" placeholder="&iquest;Cu&aacute;l es el tratamiento ?"/>
+						</md-input-container>
+					<md-checkbox ng-model="formData.heDX" ng-change="hernNo=false">DX</md-checkbox>
+						<md-input-container ng-show="hernDX || hernTX">
+							<input ng-model="formData.herDX" required="required" placeholder="&iquest;Cu&aacute;l es el diagn&oacute;stico ?"/>
+						</md-input-container>
+
+			</md-input-container>
+			<label ng-model="formData.enfRenales"> Enf. Renales : </label>
+			<md-input-container>
+					<md-checkbox ng-model="formData.enNo" ng-init="enfeNo=true">NO</md-checkbox>
+					<md-checkbox ng-model="formData.enTX" ng-change="enfeNo=false">TX</md-checkbox>
+						<md-input-container ng-show="enfeTX">
+							<input ng-model="formData.enfDX" required="required" placeholder="&iquest;Cu&aacute;l es el tratamiento ?"/>
+						</md-input-container>
+					<md-checkbox ng-model="formData.enDX" ng-change="enfeNo=false">DX</md-checkbox>
+						<md-input-container ng-show="enfeDX || enfeTX">
+							<input ng-model="formData.enfDX" required="required" placeholder="&iquest;Cu&aacute;l es el diagn&oacute;stico ?"/>
+						</md-input-container>
+
+			</md-input-container>
+			<label ng-model="formData.gastritis"> Gastritis: </label>
+			<md-input-container>
+					<md-checkbox ng-model="formData.gaNo" ng-init="gastNo=true">NO</md-checkbox>
+					<md-checkbox ng-model="formData.gaTX" ng-change="gastNo=false">TX</md-checkbox>
+						<md-input-container ng-show="gastTX">
+							<input ng-model="formData.gasDX" required="required" placeholder="&iquest;Cu&aacute;l es el tratamiento ?"/>
+						</md-input-container>
+					<md-checkbox ng-model="formData.gaDX" ng-change="gastNo=false">DX</md-checkbox>
+						<md-input-container ng-show="gastDX || gastTX">
+							<input ng-model="formData.gasDX" required="required" placeholder="&iquest;Cu&aacute;l es el diagn&oacute;stico ?"/>
+						</md-input-container>
+
+			</md-input-container>
+			<label ng-model="formData.epilepsia"> Epilepsia: </label>
+			<md-input-container>
+					<md-checkbox ng-model="formData.epNo" ng-init="epilNo=true">NO</md-checkbox>
+					<md-checkbox ng-model="formData.epTX" ng-change="epilNo=false">TX</md-checkbox>
+						<md-input-container ng-show="epilTX">
+							<input ng-model="formData.epiDX" required="required" placeholder="&iquest;Cu&aacute;l es el tratamiento ?"/>
+						</md-input-container>
+					<md-checkbox ng-model="formData.epDX" ng-change="epilNo=false">DX</md-checkbox>
+						<md-input-container ng-show="epilDX || epilTX">
+							<input ng-model="formData.epiDX" required="required" placeholder="&iquest;Cu&aacute;l es el diagn&oacute;stico ?"/>
+						</md-input-container>
+
+			</md-input-container>
+             <label ng-model="formData.alergias"> Alergias: </label>
+			<md-input-container>
+					<md-checkbox ng-model="formData.alNo" ng-model="alerNo" ng-init="alerNo=true">NO</md-checkbox>
+					<md-checkbox ng-model="formData.alTX" ng-model="alerTX" ng-change="alerNo=false">TX</md-checkbox>
+						<md-input-container ng-show="alerTX">
+							<input ng-model="formData.aleDX" required="required" placeholder="&iquest;Cu&aacute;l es el tratamiento ?"/>
+						</md-input-container>
+					<md-checkbox ng-model="formData.alDX" ng-model="alerDX" ng-change="alerNo=false">DX</md-checkbox>
+						<md-input-container ng-show="alerDX || alerTX">
+							<input ng-model="formData.aleDX" required="required" placeholder="&iquest;Cu&aacute;l es el diagn&oacute;stico ?"/>
+						</md-input-container>
+
+			</md-input-container>
+			<label ng-model="formData.cirugias"> Cirugias: </label>
+			<md-input-container>
+					<md-checkbox ng-model="formData.ciNo" ng-init="cirgNo=true">NO</md-checkbox>
+					<md-checkbox ng-model="formData.ciTX" ng-change="cirgNo=false">TX</md-checkbox>
+						<md-input-container ng-show="cirgTX">
+							<input ng-model="formData.cirDX" required="required" placeholder="&iquest;Cu&aacute;l es el tratamiento ?"/>
+						</md-input-container>
+					<md-checkbox ng-model="formData.ciDX" ng-change="cirgNo=false">DX</md-checkbox>
+						<md-input-container ng-show="cirgDX || cirgTX">
+							<input ng-model="formData.cirDX" required="required" placeholder="&iquest;Cu&aacute;l es el diagn&oacute;stico ?"/>
+						</md-input-container>
+
+			</md-input-container>
+
+            <label ng-model="formData.traumasticos"> Traumasticos: </label>
+			<md-input-container>
+					<md-checkbox ng-model="formData.trNo" ng-model="trauNo" ng-init="trauNo=true">NO</md-checkbox>
+					<md-checkbox ng-model="formData.trTX" ng-model="trauTX" ng-change="trauNo=false">TX</md-checkbox>
+						<md-input-container ng-show="trauTX">
+							<input ng-model="formData.traDX" required="required" placeholder="&iquest;Cu&aacute;l es el tratamiento ?"/>
+						</md-input-container>
+					<md-checkbox ng-model="formData.trDX" ng-model="trauDX" ng-change="trauNo=false">DX</md-checkbox>
+						<md-input-container ng-show="trauDX || trauTX">
+							<input ng-model="formData.traDX" required="required" placeholder="&iquest;Cu&aacute;l es el diagn&oacute;stico ?"/>
+						</md-input-container>
+
+			</md-input-container>
+                        <div class="row">
+                        	<button class="btn btn-primary nextBtn btn-lg left-align paso2btnAtras" type="button" >Paso Anterior</button>
+		                	<button class="btn btn-primary nextBtn btn-lg right-align paso2btn" type="button" >Siguiente Paso</button>
+		            	</div>
+		            </div>
+		        </div>
+		    </div>
+    </div>
+		</md-tab>
+		<md-tab label="Etapa 3">
+			<div layout="column" layout-sm="column" layout-padding>
+				<div flex layout="row" layout-sm="column">
+					<div flex>
+						<md-datepicker ng-model="tempFUM" flex md-placeholder="F.U.M.">
+						</md-datepicker>
+					</div>
+					<div flex>
+						<md-datepicker ng-model="tempFPP" flex md-placeholder="F.P.P.">
+						</md-datepicker>
+					</div>
+				</div>
+				<div flex layout="row" layout-sm="column" layout-padding>
+					<md-input-container flex>
+				    	<label for="edadgestacional">Edad gestacional:</label>
+				        <input placeholder="# de semanas" id="edadgestacional" type="number" class="validate">
+				    </md-input-container>
+			    	<md-input-container flex>
+			        	<label for="menarca">Menarca:</label>
+			            <input placeholder="# de años" id="menarca" type="number" class="validate">
+			        </md-input-container>
+		        	<div flex layout="row">
+            			<md-input-container flex>
+            				<label for="ritmoM">Ritmo mentrual:</label>
+            			    <input placeholder="#" id="ritmoM" type="number" class="validate">
+            			</md-input-container>
+	            		<md-input-container flex>
+	            			<label for="ritmoS"> (semana)</label>
+	            			<input placeholder="#" id="ritmoS" type="number" class="validate">
+	            		</md-input-container>
+		            </div>
+				</div>
+				<div flex layout="row" layout-sm="column" layout-padding>
+					<md-input-container flex>
+						<label for="IRS">IRS:</label>
+					    <input placeholder="# de años" id="IRS" type="number" class="validate">
+					</md-input-container>
+					<md-input-container flex>
+						<label for="gestas">Gestas:</label>
+					    <input placeholder="#" id="gestas" type="number" class="validate">
+					</md-input-container>
+					<md-input-container flex>
+						<label for="partos">Partos:</label>
+					    <input placeholder="#" id="partos" type="number" class="validate">
+					</md-input-container>
+					<md-input-container flex>
+						<label for="cesareas">Cesárea:</label>
+					    <input placeholder="#" id="cesareas" type="number" class="validate">
+					</md-input-container>
+					<md-input-container flex>
+						<label for="abortos">Abortos:</label>
+					    <input placeholder="#" id="abortos" type="number" class="validate">
+					</md-input-container>
+				</div>
+				<div flex layout="row" layout-sm="column" layout-padding>
+					<md-switch flex aria-label="Ansticonceptivos" class="md-block">
+					    Ansticonceptivos: {{ goAnsticonceptivos }}
+					</md-switch>
+					<md-input-container flex flex-sm="100" ng-show="goAnsticonceptivos" class="md-block">
+					  	<label for="tipoAnsticonceptivos">Observaciones</label>
+					  	<textarea placeholder="Especificar tipo o tipos usados." id="tipoAnsticonceptivos"></textarea>
+					</md-input-container>
+					<md-input-container flex ng-show="goAnsticonceptivos">
+						<label for="tiempoAnti">Tiempo:</label>
+						<input placeholder="# meses" id="tiempoAnti" type="number" class="validate">
+					</md-input-container>
+				</div>
+				<div flex layout="row" layout-sm="column" layout-padding ng-show="goAnsticonceptivos">
+					<md-input-container flex>
+					<label for="ultimatoma">Última toma:</label>
+					<textarea id="ultimatoma" placeholder="Especificar." ng-model="tempUltToma" md-maxlength="150"></textarea>
+					</md-input-container>
+				</div>
+				<div flex layout="row" layout-sm="column" layout-padding>
+					<md-switch flex aria-label="Disema" class="md-block">
+					    Disema
+					</md-switch>
+					<md-switch flex aria-label="Leucomea" class="md-block">
+					    Leucomea
+					</md-switch>
+					<md-switch flex aria-label="Metrorragia" class="md-block">
+					    Metrorragia
+					</md-switch>
+					<md-switch flex aria-label="Menopausia" class="md-block">
+					    Menopausia
+					</md-switch>
+					<md-switch flex aria-label="Papanicolao" class="md-block">
+					    Papanicolao
+					</md-switch>
+				</div>
+			</div>
+		</md-tab>
+		<md-tab label="Etapa 4">
+			<img ng-src="img/human-template-m.jpg" annotorious-annotate></img>
+		</md-tab>
+	</md-tabs>
+</form>

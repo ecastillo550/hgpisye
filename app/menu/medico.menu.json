@@ -1,0 +1,10 @@
+[
+  { "name": "Inicio", "route": "medico"},
+  { "name": "Examen Médico", "route": "medico/examen-general"},
+  { "name": "Laboratorio", "route": "medico/laboratorio"},
+  { "name": "Consulta", "route": "medico/consulta"},
+  { "name": "Gabinete", "route": "medico/gabinete"},
+  { "name": "Historial Cliente", "route": "medico/historial"},
+  { "type": "devider"},
+  { "name": "Logout", "route" : "logout", "icon": null}
+]

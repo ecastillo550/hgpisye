@@ -1,0 +1,62 @@
+<form>
+	<div layout="column">
+		<div layout>
+			<div flex>
+				<h3 class="center-align">Captura de Laboratorio</h3>
+			</div>
+		</div>
+		<div layout="column">
+			<div layout="row" layout-sm="column" layout-padding>
+			    <md-input-container flex>
+			    	<label>Tipos de estudio</label>
+			    	<div flex layout="row">
+				        <md-checkbox flex name="bh">BH</md-checkbox>
+				        <md-checkbox flex name="qs">QS</md-checkbox>
+				        <md-checkbox flex name="antidoping">Antidoping</md-checkbox>
+			        </div>
+			        <div flex layout="row">
+				        <md-checkbox flex name="pie">P.I.E.</md-checkbox>
+				        <md-checkbox flex name="ego">E.G.O.</md-checkbox>
+				        <md-checkbox flex name="pfh">P.F.H.</md-checkbox>
+			        </div>
+			        <div flex layout="row">
+				        <md-checkbox flex name="aprostatico">A. Prost&aacute;tico</md-checkbox>
+				        <md-checkbox flex name="grupoyrh">Grupo y R.H.</md-checkbox>
+				        <md-checkbox flex name="hiv">H.I.V.</md-checkbox>
+			        </div>
+			        <div flex layout="row">
+				        <md-checkbox flex name="koh">K.O.H.</md-checkbox>
+				        <md-checkbox flex name="exudadof">Exudado F.</md-checkbox>
+				        <md-checkbox flex name="otro" ng-model="otroShow">Otro</md-checkbox>
+			        </div>
+			    	<div flex layout="row">
+				    	<md-input-container flex ng-show="otroShow">
+				       		<input name="otroExamen" type="text-area" placeholder="Ingrese el nombre del servicio que est&aacute; realizando" required="required"/>
+				    	</md-input-container>
+				    </div>
+			    </md-input-container>
+			    
+			</div>
+			<div layout="row" layout-sm="column" layout-padding>
+			    <md-input-container flex>
+			    	<label >Interpretaci&oacute;n</label>
+			        <input name="interpretacion" type="text" class="validate" placeholder="Escriba aqu&iacute; la interpretaci&oacute;n de los resultados" />   
+			    </md-input-container>
+			</div>
+			<div layout="row" layout-sm="column" layout-padding>
+			    <md-input-container flex>
+			    	<label >Conclusiones</label>
+			       <input name="conclusiones" type="text" class="validate" placeholder="Escriba aqu&iacute; las conclusiones de los resultados" />
+			    </md-input-container>
+			</div>
+			<div layout="row" layout-sm="column" layout-padding>
+			    <md-input-container flex>
+			    	<label >Diagn&oacute;stico</label>
+			       <input name="diagnostico" type="text" class="validate" placeholder="Escriba aqu&iacute; el diang&oacute;tico" />
+			    </md-input-container>
+			</div>
+			<md-button> Subir Archivo(s) de Labortorio </md-button>
+			<md-button> Guardar </md-button>
+		</div>
+	</div>
+</form>

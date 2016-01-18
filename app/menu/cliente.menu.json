@@ -1,0 +1,8 @@
+[
+  { "name": "Inicio", "route": "cliente"},
+  { "name": "Agendar Citas", "route": "cliente/solicitudes"},
+  { "name": "Listado de pacientes", "route": "cliente/pacientes"},
+  { "name": "Costos", "route": "cliente"},
+  { "type": "devider"},
+  { "name": "Logout", "route" : "logout", "icon": null}
+]

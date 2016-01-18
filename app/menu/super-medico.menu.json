@@ -1,0 +1,7 @@
+[
+  { "name": "Inicio", "route": "super-medico"},
+  { "name": "Resultados", "route": "super-medico/resultados"},
+  { "name": "Agenda", "route": "super-medico/agenda"},
+  { "type": "devider"},
+  { "name": "Logout", "route" : "logout", "icon": null}
+]

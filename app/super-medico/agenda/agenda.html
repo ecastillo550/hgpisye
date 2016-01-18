@@ -1,0 +1,22 @@
+<md-content ng-controller="AgendaCtlr as agenda">
+	<section>
+		<div class="md-inline-form">
+			<form name="agendaForm">
+				<h2 class="md-title">Filtros</h2>
+				<div layout layout-sm="column">
+					<md-input-container flex="50">
+						<label>Proveedor</label>
+						<md-select ng-model="proveedor">
+		          <md-option ng-repeat="proveedor in proveedores" value="{{proveedor}}">
+		             {{proveedor}}
+		          </md-option>
+		        </md-select>
+					</md-input-container>
+				</div>
+			</form>
+		</div>
+	</section>
+	<section>
+		<calendar solicitudes='solicitudes'></calendar>
+	</section>
+</md-content>

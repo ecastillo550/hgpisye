@@ -1,0 +1,36 @@
+<div>
+  <md-data-table-toolbar>
+    <h2 class="md-title">Pacientes</h2>
+  </md-data-table-toolbar>
+  <md-input-container>
+    <md-icon md-font-set="material-icons">search</md-icon>
+    <input name="search" type="text" ng-model="filter">
+  </md-input-container>
+  <md-data-table-container>
+    <table md-data-table md-progress="deferred">
+      <thead md-order="order" md-trigger="toOrder">
+        <tr>
+          <th name="Nombre" order-by="nombre"></th>
+          <th name="Apellido paterno" order-by="ap"></th>
+          <th name="Apellido materno" order-by="am"></th>
+          <th name="Área" order-by="puesto"></th>
+          <th name="Examen" order-by="examen"></th>
+          <th name="Diagnóstico" order-by="resultado"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr md-auto-select ng-repeat="paciente in pacientes  | filter: filter | orderBy: order" onclick="document.location = 'Cliente/historial'">
+          <td>{{paciente.nombre}}</td>
+          <td>{{paciente.nombre}}</td>
+          <td>{{paciente.ap}}</td>
+          <td>{{paciente.am}}</td>
+          <td>{{paciente.puesto}}</td>
+          <td>{{paciente.examen}}</td>
+          <td ng-style="{{evalResultStyle(paciente.resultado)}}">{{paciente.resultado}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </md-data-table-container>
+
+  <md-data-table-pagination md-limit="query.limit" md-page="query.page" md-total="{{desserts.total}}" md-trigger="onPaginationChange"></md-data-table-pagination>
+</div>

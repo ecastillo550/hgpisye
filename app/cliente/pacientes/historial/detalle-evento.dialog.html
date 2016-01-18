@@ -1,0 +1,16 @@
+<md-dialog>
+	<md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Evento: {{evento.nombre}}</h2>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+	<div layout="column" layout-align="space-around center">
+		<div>Hora: {{evento.hora}}</div>
+		<div>Servicio: {{evento.servicio}}</div>
+		<div>Diagnóstico: {{evento.diagnostico}}</div>
+		<div>Costo: {{evento.costo | currency}}</div>
+	</div>
+</md-dialog>

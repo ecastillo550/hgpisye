@@ -1,0 +1,185 @@
+<style>
+.notas-imp{
+	border: 1px solid black;
+	width: 100%;
+	color: red;
+	border-top-width: 50%;
+	border-bottom-width: 50%;
+}
+
+.listaservicios{
+	display: none;
+}
+h3{
+	width: 100%;
+}
+</style>
+<div class="md-inline form" layout="column">
+	<div layout>
+		<div flex>
+			<h3 class="center-align"> Programación de Atención Individual</h3>
+		</div>
+	</div>
+	<div layout layout-align="center">
+		<div flex-offset-sm="0" layout="column">
+			<md-card id="notas" flex>
+				<md-card-content>
+					<h3>Notas:</h3>
+					<h5>  Para las tomas de Laboratorio se requiere presentarse en ayunas. </h5>
+					<h5>  Se requiere identificación oficial para recibir atención. </h5>
+				</md-card-content>
+			</md-card>
+		</div>
+	</div>
+
+	<div layout="column" ng-controller="SolicitudCtlr">
+    <form>
+			<div layout="row" layout-sm="column" layout-padding>
+		    <md-input-container flex>
+		    	<label for="nombre">Nombres(s)</label>
+		        <input ng-model="pacienteForm.nombre" placeholder="Ingrese el / los nombres del empleado aquí." id="nombre"  name="nombre" type="text" class="validate">
+		    </md-input-container>
+		    <md-input-container flex>
+		    	<label for="apellido_paterno">Apellido Paterno</label>
+		        <input ng-model="pacienteForm.apellido_paterno" placeholder="Ingrese el apellido PATERNO aquí." id="apellido_paterno" name="apellido_paterno" type="text" class="validate">
+		    </md-input-container>
+		    <md-input-container flex>
+		    	<label for="apellido_materno">Apellido Materno</label>
+		        <input ng-model="pacienteForm.apellido_materno" placeholder="Ingrese el apellido MATERNO aquí." id="apellido_materno" name="apellido_materno" type="text" class="validate">
+		    </md-input-container>
+			</div>
+	    <div layout="column">
+	        <div flex>
+	        	<div layout="row">
+	        		<md-datepicker flex ng-model="pacienteForm.fecha" md-placeholder="Fecha de atención">
+	        		</md-datepicker>
+	        	</div>
+	        </div>
+	        <div flex layout-padding layout-margin>
+	        	<md-input-container flex="40" flex-sm="100" flex-offset-sm="0">
+	        		<md-icon class="md-icon" aria-label="hora">access_time</md-icon>
+	        	  	<input id="hora" ng-model="pacienteForm.hora" name="hora" type="time" class="timepicker">
+	      		</md-input-container>
+	        </div>
+	    </div>
+	    <div layout="row" layout-padding>
+	      	<div flex>
+	      		<h5> Estudios a realizar </h5>
+	      	</div>
+	    </div>
+		    <div layout="row" layout-padding layout-sm="column">
+		      	<div flex>
+		      		<div layout="column">
+		      			<div flex>
+		      				<md-checkbox id="examengeneral" ng-model="pacienteForm.examen">
+		      					<label for="examengeneral"> Examen general </label>
+		      				</md-checkbox>
+		      			</div>
+		      			<div flex flex-offset-sm="5">
+			      			<md-checkbox id="preingreso" ng-show="pacienteForm.examen" ng-model="pacienteForm.preingreso">
+			      				<label for="preingreso"> Pre-ingreso </label>
+			      			</md-checkbox>
+			      		</div>
+			      		<div flex flex-offset-sm="5">
+			     			<md-checkbox id="periodico" ng-show="pacienteForm.examen" ng-model="pacienteForm.periodico">
+			      				<label for="periodico"> Periódico </label>
+			      			</md-checkbox>
+			      		</div>
+		      		</div>
+		      	</div>
+		    	<div flex>
+		      		<div layout="column">
+		      			<div flex>
+		      				<md-checkbox id="consulta" ng-model="pacienteForm.consulta">
+		      					<label for="consulta"> Consulta </label>
+		      				</md-checkbox>
+		      			</div>
+		      			<div flex flex-offset-sm="5">
+			      			<md-checkbox id="especialidad" ng-show="pacienteForm.consulta" ng-model="pacienteForm.especialidad">
+			      				<label for="especialidad"> Especialidad </label>
+			      			</md-checkbox>
+			      		</div>
+			      		<div flex flex-offset-sm="5">
+			      			<md-checkbox id="traslado" ng-show="pacienteForm.consulta" ng-model="pacienteForm.traslado">
+			      				<label for="traslado"> Traslado </label>
+			      			</md-checkbox>
+			      		</div>
+			      		<div flex flex-offset-sm="5">
+			      			<md-checkbox id="consultageneral" ng-show="pacienteForm.consulta" ng-model="pacienteForm.consultageneral">
+			      				<label for="consultageneral"> Consulta General </label>
+			      			</md-checkbox>
+			      		</div>
+		      		</div>
+		      	</div>
+		      	<div flex>
+		      		<div layout="column">
+		      			<div flex>
+		      			    <md-checkbox id="gabinete" ng-model="pacienteForm.gabinete">
+		      			    	<label for="gabinete"> Gabinete </label>
+		      			    </md-checkbox>
+		      			</div>
+		      			<div flex flex-offset-sm="5">
+		      				<md-checkbox id="espirometria" ng-show="pacienteForm.gabinete" ng-model="pacienteForm.espirometria">
+		      				    <label for="espirometria"> Espirometría </label>
+		      				</md-checkbox>
+		      			</div>
+		      			<div flex flex-offset-sm="5">
+		      				<md-checkbox id="rayosx" ng-show="pacienteForm.gabinete" ng-model="pacienteForm.rayosx">
+		      				<label for="rayosx"> Rayos-X </label>
+		      				</md-checkbox>
+		      			</div>
+		      		  	<div flex flex-offset-sm="5">
+		      				<md-checkbox id="audiometria" ng-show="pacienteForm.gabinete" ng-model="pacienteForm.audiometria">
+		      				    <label for="audiometria"> Audiometría </label>
+		      				</md-checkbox>
+		      			</div>
+		      		</div>
+		      	</div>
+		      	<div flex>
+		      		<div layout="column">
+		      			<div flex>
+		      			    <md-checkbox id="laboratorio" ng-model="pacienteForm.lab">
+		      			      	<label for="laboratorio"> Laboratorio </label>
+		      			    </md-checkbox>
+		      			</div>
+		      			<div flex flex-offset-sm="5">
+		      				<md-checkbox id="antidopping" ng-show="pacienteForm.lab" ng-model="pacienteForm.antidopping">
+		      				    <label for="antidopping"> Antidopping </label>
+		      				</md-checkbox>
+		      			</div>
+		      			<div flex flex-offset-sm="5">
+		      				<md-checkbox id="hiv" ng-show="pacienteForm.lab" ng-model="pacienteForm.hiv">
+		      				    <label for="hiv"> HIV </label>
+		      				</md-checkbox>
+		      			</div>
+		      		</div>
+		      	</div>
+		     </div>
+		    <div layout="row" layout-padding>
+			    <md-input-container flex="80" flex-sm="100" class="md-block">
+			      	<label for="observaciones">Observaciones</label>
+			      	<textarea placeholder="En esta sección puedes poner un rango de tiempo en el que crees que tardará el empleado en llegar, o cualquier observación especial." id="observaciones" name="observaciones" ng-model="cliente.observaciones" md-maxlength="250"></textarea>
+			    </md-input-container>
+			</div>
+			<?php if ($this->user->getUserType() === 'Cliente') : ?>
+			<div layout="row" layout-padding>
+				<div flex>
+    	  	<label for="empresa_nombre">Empresa: </label>
+      		<!-- Insertar empresa con Angular -->
+        </div>
+        <div flex>
+					<label for="autorizado_por">Autorizado por: </label>
+					<!-- Insertar el doctor que lo autorizo con Angular -->	
+				</div>
+			</div>
+			<?php endif ?>
+			<div layout="row" layout-padding>
+				<div flex flex-offset="40">
+					<md-button class="btn md-raised waves-effect waves-teal orange" ng-click="submitIndividual()" type="submit">
+						Agendar
+					</md-button>
+				</div>
+			</div>
+	    </form>
+	</div>
+</div>
