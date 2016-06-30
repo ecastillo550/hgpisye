@@ -14,10 +14,10 @@ class Config {
 		return
 			array(
 				'appPath' => $this->appDepth.$this->appDir.'/',
-				'db_engine' => 'mysql',
+				'db_engine' => 'pgsql',
 				'db_server' => 'localhost',
-				'db_database' => 'haganeio_pisye',
-				'db_user' => 'haganeio_dev',
+				'db_database' => 'pisye',
+				'db_user' => 'dev',
 				'db_password' => 'Bicarbonato1!',
 				'session_time' => 3600,
 				'document_root' => '/'
